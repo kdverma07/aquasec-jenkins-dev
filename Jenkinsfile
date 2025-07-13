@@ -1,12 +1,14 @@
-@Library('jenkins-shared-lib') _
-
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'golang:1.20'
+        }
+    }
 
     environment {
         IMAGE_NAME = "testuser/http-echo"
         IMAGE_TAG = "latest"
-        DOCKERHUB_CREDENTIALS = "dockerhub-credentials" // Jenkins credentials ID
+        DOCKERHUB_CREDENTIALS = "dockerhub-credentials"
     }
 
     stages {
