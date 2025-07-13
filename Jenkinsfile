@@ -1,13 +1,20 @@
+@Library('jenkins-shared-lib') _
+
 pipeline {
     agent any
 
     environment {
         IMAGE_NAME = "testuser/http-echo"
         IMAGE_TAG = "latest"
-        DOCKERHUB_CREDENTIALS = "dockerhub-credentials"
+        DOCKERHUB_CREDENTIALS = "dockerhub-credentials" // Jenkins credentials ID
     }
 
     stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/hashicorp/http-echo.git'
+            }
+        }
 
         stage('Build and Push Docker Image') {
             steps {
