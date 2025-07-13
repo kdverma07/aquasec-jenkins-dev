@@ -8,11 +8,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/hashicorp/http-echo.git'
-            }
-        }
 
         stage('Build Binary') {
             steps {
