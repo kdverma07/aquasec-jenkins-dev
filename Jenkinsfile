@@ -9,13 +9,6 @@ pipeline {
 
     stages {
 
-        stage('Build Binary') {
-            steps {
-                sh 'make tools'
-                sh 'make build'
-            }
-        }
-
         stage('Build and Push Docker Image') {
             steps {
                 script {
