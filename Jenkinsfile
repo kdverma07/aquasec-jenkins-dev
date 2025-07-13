@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'golang:1.20'
-        }
-    }
+    agent any
 
     environment {
         IMAGE_NAME = "testuser/http-echo"
